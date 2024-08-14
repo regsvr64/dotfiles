@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DiskUsage_Home="$(du -hs $HOME | awk '{print $1 "B"}')"
+DiskUsage_MNT="$(du -hs /mnt | awk '{print $1 "B"}')"
+
+Prefix_Home="🏠"
+Prefix_MNT="📁"
+
+echo " $Prefix_MNT $DiskUsage_MNT | $Prefix_Home $DiskUsage_Home "

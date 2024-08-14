@@ -1,0 +1,22 @@
+#!/bin/bash
+
+CurrentDate="$(date +'%-d/%-m/%y')"
+CurrentHour="$(date +'%-I')"
+CurrentTime="$(date +'%-I:%M%P')"
+
+case $CurrentHour in
+	"12") Prefix="🕛";;
+	"11") Prefix="🕚";;
+	"10") Prefix="🕙";;
+	 "9") Prefix="🕘";;
+	 "8") Prefix="🕗";;
+	 "7") Prefix="🕖";;
+	 "6") Prefix="🕕";;
+	 "5") Prefix="🕔";;
+	 "4") Prefix="🕓";;
+	 "3") Prefix="🕒";;
+	 "2") Prefix="🕑";;
+	 "1") Prefix="🕐";;
+esac
+
+echo " 📅 $CurrentDate $Prefix $CurrentTime |"

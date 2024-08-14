@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IP="$(ip addr show dev enp4s0 | awk '/inet 192/ {print $2}' | sed 's/\/24//')"
+
+Prefix_Wired="🖥️"
+Prefix_Wireless="🛜"
+
+# xsetroot -cursor_name left_ptr
+
+echo " $Prefix_Wired $IP "

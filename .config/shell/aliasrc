@@ -1,0 +1,14 @@
+#!/bin/bash
+#        _ _                    
+#   __ _| (_) __ _ ___ _ __ ___ 
+#  / _` | | |/ _` / __| '__/ __|
+# | (_| | | | (_| \__ \ | | (__ 
+#  \__,_|_|_|\__,_|___/_|  \___|
+
+alias \
+	ls="ls --color=auto" \
+	grep="grep --color=auto" \
+	ip="ip -c" \
+	ll="ls -lah" \
+	rm="trash -v" \
+	cat="bat --theme=Nord"

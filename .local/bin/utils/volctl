@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PulseSink="$(pactl get-default-sink)"
+SinkVolume="$(pactl get-sink-volume $PulseSink | awk '{print $5}' | head -n1)"
+SinkMute="$(pactl get-sink-mute $PulseSink | awk '{print $2}')"
+
+[ ! -z "$(pgrep dwm)" ] && BLOCKS=dwmblocks
+[ ! -z "$(pgrep i3)" ] && BLOCKS=i3blocks
+
+case $1 in
+	"volup") pactl set-sink-volume $PulseSink +10%;;
+	"voldown") pactl set-sink-volume $PulseSink -10%;;
+	"mute") pactl set-sink-mute $PulseSink toggle;;
+esac
+
+pkill -RTMIN+3 $BLOCKS

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+WeatherSave="$HOME/.local/share/sb-weather"
+WeatherURL="https://wttr.in/St%20Helens?format=2"
+
+Icon="/usr/share/icons/Papirus-Dark/48x48/apps/weather.svg"
+FailIcon="/usr/share/icons/Papirus-Dark/48x48/apps/system-error.svg"
+
+notify-send "Updating Weather..." -r 4 -i $Icon
+
+curl -Ss $WeatherURL -o $WeatherSave || notify-send "Failed to update weather" -r 4 -i $FailIcon
+SensibleOutput="$(awk '{print $1, $2}' $WeatherSave | sed 's/🌡️//g;s/+//g')"
+
+echo " $SensibleOutput "
+

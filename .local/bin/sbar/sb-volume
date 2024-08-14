@@ -1,0 +1,13 @@
+#!/bin/bash
+
+Sink=$(pactl get-default-sink)
+MuteStatus=$(pactl get-sink-mute $Sink | awk '{print $2}')
+Volume=$(pactl get-sink-volume $Sink | head -n1 | awk '{print $5}')
+VolNumber=$(echo $Volume | sed 's/%//g')
+
+case $MuteStatus in
+	yes) Prefix="🔇";;
+	no) Prefix="🔊";;
+esac
+
+echo " $Prefix $Volume "

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+WallpaperDir="$HOME/Pictures/Wallpapers/nordic-wallpapers/wallpapers"
+Wallpaper="$WallpaperDir/$(ls $WallpaperDir | shuf | head -n1)"
+
+notify-send --icon $Wallpaper -r 1 "New Wallpaper"
+xwallpaper --zoom $Wallpaper

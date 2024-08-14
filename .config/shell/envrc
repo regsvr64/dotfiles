@@ -1,0 +1,17 @@
+#!/bin/bash
+#   ___ _ ____   ___ __ ___ 
+#  / _ \ '_ \ \ / / '__/ __|
+# |  __/ | | \ V /| | | (__ 
+#  \___|_| |_|\_/ |_|  \___|
+
+case $0 in
+	*"zsh") CurrentShell=zsh;;
+	*"bash") export PS1="\[$(tput setaf 6)\]\u\[$(tput setaf 15)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 13)\]\w \[$(tput sgr0)\]$ ";;
+esac
+
+export \
+	EDITOR=nvim \
+	BROWSER=firefox \
+	PATH="$PATH:$HOME/.local/bin/sbar:$HOME/.local/bin/utils" \
+	SUDO_PROMPT="Password: " \
+	XCURSOR_SIZE=16

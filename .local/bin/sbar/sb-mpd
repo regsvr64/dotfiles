@@ -1,0 +1,16 @@
+#!/bin/bash
+
+Status="$(mpc status | awk '/^\[/ {print $1}' | sed 's/\[//g;s/\]//g')"
+Song="$(mpc status --format="%artist% - %title%" | head -n1)"
+
+case $Status in
+	"playing") Prefix="▶️";;
+	"paused") Prefix="⏸️";;
+esac
+
+IsActive="$(echo $Song | grep 'random:')"
+[ ! -z "$IsActive" ] && Song="Not Playing" && Prefix="⏸️"
+
+echo " $Prefix $Song "
+
+notify-send -i "$HOME/Music/$(mpc status --format=%file% | awk -F '/' '{print $1}' | head -n1)/cover.jpg" "Now Playing" "$Song" -r 2

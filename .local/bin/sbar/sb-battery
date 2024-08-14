@@ -1,0 +1,8 @@
+#!/bin/bash
+
+Capacity="$(cat /sys/class/power_supply/BAT0/capacity)%"
+Status="$(cat /sys/class/power_supply/BAT0/status)"
+
+[ "$Status" = "Charging" ] && Prefix="🔌" || Prefix="🔋"
+
+echo " $Prefix $Capacity "
